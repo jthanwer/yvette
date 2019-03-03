@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block style %}
+  <link rel="stylesheet" type="text/css" href="{% static 'yvette/accueil.css' %}">
+{% endblock %}
+
+{% block content %}
+	{% if  envoi%}Votre profil a bien été créé !{% endif %}
+	<div class="container">
+    <div class="card my-5">
+      <div class="card-header text-light bg-dark">
+        <h3 class="text-center my-3"> Créer un profil</h3>
+      </div>
+      <div class="card-body">
+        <div class="row justify-content-center">
+          <div class="col-lg-5">
+            <form action="{% url "register" %}" method="post">
+              {% csrf_token %}
+              {{ form|crispy }}
+              <div class="row justify-content-center">
+                <button type="submit" class="btn btn-success">Créer le profil</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+	</div>
+
+{% endblock %}

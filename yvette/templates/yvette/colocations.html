@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+	{% for coloc in colocations %}
+		<div class="container p-3 rounded coloc">
+      <div class="row">
+        <div class="col-lg-3">
+          <img src="{% static 'yvette/img/mireille.png' %}" class="img-fluid img-thumbnail my-4" alt="Mamie">
+          <h4 class="text-center"> {{coloc.createur.city}} </h4>
+        </div>
+        <div class="col-lg-9">
+          <div class="row">
+            <div class="col-lg-12 mt-4">
+              <h3> Je m'appelle {{coloc.createur.user.first_name}} </h3>
+            </div>
+          </div>
+          <div class="row my-2">
+            <div class="col-lg-12">
+              <p> "{{coloc.intro}}" </p>
+            </div>
+          </div>
+          <div class="row my-2">
+            <div class="col-lg-3">
+              <h5> Ma coloc en deux mots </h5>
+              <p> {{coloc.two_words}} </p>
+            </div>
+            <div class="col-lg-4">
+              <h5> Colocataires déjà présents </h5>
+            </div>
+            <div class="col-lg-2">
+              <h5> &Acirc;ge moyen </h5>
+              <p> {{coloc.mean_age}} </p>
+            </div>
+            <div class="col-lg-3">
+              <h5> Des animaux ? </h5>
+              <p> {{coloc.pets}} </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+          <a href="#" class="btn btn-bg-2 px-5" role="button">Découvrir</a>
+      </div>
+		</div>
+	{% endfor %}
+{% endblock %}

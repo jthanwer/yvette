@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/yvette.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Sacramento|Signika|Playfair+Display" rel="stylesheet">
+  {% block style %}{% endblock %}
+  <title>{% block title %}Yvette{% endblock %}</title>
+</head>
+<body>
+   {% block nav %}
+   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url "home" %}">Accueil</a>
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "new_coloc" %}">Créer une colocation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "colocations" %}">Découvrir les colocations</a>
+            </li>
+        </ul>
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="">Bienvenue sur Yvette !</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-1 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+          <li class="nav-item active">
+              <a class="nav-link" href="{% url "deconnexion" %}">Se déconnecter</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Bonjour {{ user.first_name }}</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+              <a class="nav-link" href="{% url "register" %}">Créer un compte</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url "login" %}">Se connecter</a>
+          </li>
+          {% endif %}
+        </ul>
+    </div>
+  </nav>
+  {% endblock %}
+  {% block content %}
+  {% endblock %}
+
+  {% block footer %}
+  {% endblock %}
+
+</body>
+
+</html>

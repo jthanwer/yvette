@@ -7,12 +7,9 @@
 
 {% block content %}
 	<div class="container">
-    {% if user.is_authenticated %}
-      Vous êtes connecté, {{ user.first_name }} !
-    {% else %}
     <div class="card my-5">
-      <div class="card-header text-light bg-dark">
-        <h3 class="text-center my-3">Se connecter</h3>
+      <div class="card-header text-light bg-nav">
+        <h2 class="text-center my-3">Se connecter</h2>
       </div>
       <div class="card-body">
         <div class="row justify-content-center">
@@ -28,7 +25,6 @@
         </div>
       </div>
     </div>
-    {% endif %}
   </div>
 
 {% endblock %}

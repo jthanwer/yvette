@@ -11,7 +11,7 @@
 </head>
 <body>
    {% block nav %}
-   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+   <nav class="navbar navbar-expand-md navbar-dark bg-nav">
     <a class="navbar-brand" href="{% url "home" %}">Accueil</a>
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
@@ -24,7 +24,7 @@
         </ul>
     </div>
     <div class="mx-auto order-0">
-        <a class="navbar-brand mx-auto" href="">Bienvenue sur Yvette !</a>
+        <a class="navbar-brand mx-auto" href="{% url "home" %}">Bienvenue sur Yvette !</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,17 +32,17 @@
     <div class="navbar-collapse collapse w-100 order-1 dual-collapse2">
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
-          <li class="nav-item active">
-              <a class="nav-link" href="{% url "deconnexion" %}">Se déconnecter</a>
-          </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="#">Bonjour {{ user.first_name }}</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url "deconnexion" %}">Se déconnecter</a>
           </li>
           {% else %}
           <li class="nav-item">
               <a class="nav-link" href="{% url "register" %}">Créer un compte</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="{% url "login" %}">Se connecter</a>
           </li>
           {% endif %}

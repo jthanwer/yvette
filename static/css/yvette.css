@@ -1,3 +1,7 @@
+html{
+	font-size: 1.3rem;
+}
+
 body{
 	background-color: #faeecd !important;
 }
@@ -10,26 +14,30 @@ header {
 h1{
 	font-family: 'Playfair Display', serif;
 	font-weight: bold;
-	font-size: 110px;
+	font-size: 6rem;
+}
+
+.intro-text{
+	font-family: 'Sacramento', cursive;
 }
 
 h2{
-	font-family: 'Sacramento', cursive;
-	font-size: 40px;
+	font-size: 2rem;
 }
 
 h3{
 	font-family: 'Signika', sans-serif;
-	font-size: 40px;
+	font-size: 2.2rem;
 	color: #2B5455;
 }
 
 h4{
 	font-family: 'Sacramento', cursive;
-	font-size: 30px;
+	font-size: 1.7rem;
 }
 
 h5{
+	font-size: 1.1rem;
 	font-weight: bold;
 }
 
@@ -38,12 +46,13 @@ h5{
 }
 
 .bg-nav{
-	background-color: #e2cdfa;
+	background-color: #2b5455;
 }
 
 .btn{
-	margin : 10px 20px 10px 20px;
-	padding : 10px 10px 10px 10px;
+	margin : 10px 10px 10px 10px;
+	padding : 10px 50px 10px 50px;
+	font-size: 20px;
 	font-weight: bold;
 }
 
@@ -69,7 +78,6 @@ h5{
   padding-bottom: 70px;
 }
 
-
 .styled{
 	border:0;
 	color: #f3f2dc;
@@ -77,3 +85,11 @@ h5{
 	padding: 10px 10px 10px 10px;
 	margin : 20px 10px 10px 20px;
 }
+
+/* [class*="col-"], footer {
+  background-color: lightgreen;
+  border: 2px solid black;
+  border-radius: 6px;
+  line-height: 40px;
+  text-align: center;
+} */

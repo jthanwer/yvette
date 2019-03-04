@@ -35,6 +35,7 @@ def connexion(request):
 
             if user:
                 login(request, user)
+                return render(request, 'yvette/accueil.html', locals())
             else:
                 error = True
 
@@ -59,6 +60,7 @@ def create_coloc(request):
             envoi = True
             coloc = form.save(commit=False)
             coloc.createur = request.user.profil
+            coloc.mean_age = request.user.profil.age
             coloc.save()
 
     return render(request, 'yvette/new_coloc.html', locals())

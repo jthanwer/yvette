@@ -4,6 +4,7 @@
   {% load static %}
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+  {# <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> #}
   <link rel="stylesheet" type="text/css" href="{% static 'css/yvette.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Sacramento|Signika|Playfair+Display" rel="stylesheet">
   {% block style %}{% endblock %}
@@ -32,8 +33,16 @@
     <div class="navbar-collapse collapse w-100 order-1 dual-collapse2">
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="profilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Bonjour {{ user.first_name }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="profiDropdown">
+              <a  class="dropdown-item" href="#"> Vos paramètres </a>
+            </div>
+          </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Bonjour {{ user.first_name }}</a>
+              <a class="nav-link" href="{% url "my_profile" %}">Mon profil</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="{% url "deconnexion" %}">Se déconnecter</a>

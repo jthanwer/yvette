@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'yvette'
+    'mainapp'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -82,9 +82,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'yvette_db',
         'USER': 'jthanwer',
-        'PASSWORD': 'yvette_mdp',
+        'PASSWORD': 'Zdv:78??',
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': ''
     }
 }
 

@@ -3,10 +3,10 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('colocations/', views.scroll_colocs, name='colocations'),
-    # path('register/', views.register, name='register'),
-    # path('connexion/', views.connexion, name='login'),
-    # path('deconnexion', views.deconnexion, name='deconnexion'),
-    # path('my_profile/', views.my_profile, name='my_profile'),
-    path('new_coloc/', views.create_coloc, name='new_coloc')
+    path('colocs/', views.ListColocs.as_view(), name='list_colocs'),
+    path('colocs/<int:pk>', views.DetailColoc.as_view(), name='detail_coloc'),
+    path('colocs/delete/<int:pk>', views.DeleteColoc.as_view(), name='delete_coloc'),
+    path('colocs/update/<int:pk>', views.UpdateColoc.as_view(), name='update_coloc'),
+    path('colocs/<str:op>/<int:id_coloc>/', views.change_coloc, name='change_coloc'),
+    path('create_coloc/', views.create_coloc, name='create_coloc')
 ]

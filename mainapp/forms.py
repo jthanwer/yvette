@@ -1,6 +1,5 @@
 from django import forms
-from .models import Profil, Colocation
-from django.contrib.auth.models import User
+from .models import Colocation
 from django.core.exceptions import ValidationError
 
 

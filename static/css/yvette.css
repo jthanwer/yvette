@@ -1,9 +1,17 @@
+:root {
+	--bg-color-main: #FBEECC;
+	--bg-color-1: #2b5455;
+	--bg-color-2: #ab8507;
+	--bg-color-3: #0b7b77;
+	--bg-color-4: #3d5a6c;
+}
+
 html{
 	font-size: 1.3rem;
 }
 
 body{
-	background-color: #faeecd !important;
+	background: url("/static/img/background.jpg") !important;
 }
 
 header {
@@ -41,13 +49,22 @@ h5{
 	font-weight: bold;
 }
 
-.bg-1{
-	background-color: #faeecd;
-}
-
 .bg-nav{
 	background-color: #2b5455;
 }
+
+.bg-w{
+	background-color: white;
+}
+
+.bg-2{
+	background-color: #0b7b77;
+}
+
+.bg-3{
+	background-color: #3d5a6c;
+}
+
 
 .btn{
 	margin : 10px 10px 10px 10px;
@@ -73,9 +90,13 @@ h5{
 	background-color: white;
 }
 
-.container-fluid {
+.padding-cont {
   padding-top: 70px;
   padding-bottom: 70px;
+}
+
+.ht-100{
+	height: 100px
 }
 
 .styled{
@@ -84,6 +105,99 @@ h5{
 	background: #2b5455;
 	padding: 10px 10px 10px 10px;
 	margin : 20px 10px 10px 20px;
+}
+
+.img-small{
+	width: 40px;
+	height: 40px;
+}
+
+.img-profile{
+	position: absolute;
+	left: 50%;
+	top: 100px;
+	width : 150px;
+	height: 150px;
+	margin-left: -75px;
+}
+
+.img-nav
+{
+	position: relative;
+	float: left;
+	left: -10px;
+	width: 30px;
+	height: 30px;
+}
+
+.img-coloc
+{
+	width: 80px;
+	height: 80px;
+}
+
+
+.carousel-item img{
+  width: auto;
+  height: 400px;
+  max-height: 400px;
+}
+
+
+.h-400{
+	min-height: 400px;
+	max-height: 400px;
+}
+
+.h-200{
+	min-height: 200px;
+	max-height: 200px;
+}
+
+.disp-tenants{
+	background-color: #FBEECC;
+	border: 1px solid var(--bg-color-2);
+	margin-right: -1px !important;
+	margin-bottom: -1px !important;
+}
+
+.disp-tenants:hover, .disp-tenants:hover h3{
+	background-color: var(--bg-color-3);
+	color: white;
+}
+
+.nav-link.active.nav-coloc{
+	background-color: #2b5455 !important;
+	color: white !important;
+	margin-left: -15px;
+	margin-right: -15px;
+	border-radius: 0px;
+}
+
+.nav-link.nav-coloc{
+	background-color: var(--bg-color-3) !important;
+	color: white !important;
+	margin-left: -15px;
+	margin-right: -15px;
+	border-radius: 0px !important;
+}
+
+.border-g{
+	border: 1px solid var(--bg-color-1);
+	padding: -200px;
+}
+
+
+hr.style13 {
+  border: 0;
+  width: 96%;
+  background-color:#2b5455;
+  height: 20px;
+}
+
+
+.messages{
+	background-color: white;
 }
 
 /* [class*="col-"], footer {

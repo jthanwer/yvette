@@ -3,14 +3,17 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from .forms import CustomUserCreationForm, LogInForm
-from .models import Profil
+from .models import Profile
+
 
 
 def register(request):
-    form = CustomUserCreationForm(request.POST or None)
+    form = CustomUserCreationForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-        envoi = True
+        user = authenticate(username=form.cleaned_data['username'],
+                            password=form.cleaned_data['password1'])
+        login(request, user)
         return redirect('home')
 
     return render(request, 'users_app/register.html', locals())
@@ -26,7 +29,7 @@ def connexion(request):
 
             if user:
                 login(request, user)
-                return render(request, 'mainapp/accueil.html', locals())
+                return redirect('home')
             else:
                 error = True
 
@@ -42,10 +45,10 @@ def deconnexion(request):
     return redirect(reverse(connexion))
 
 
-# View to see the personal profile
-@login_required
-def my_profile(request):
-    profile = request.user.profil
+# Display the personal profile
+def detail_profile(request, pk):
+    profile = Profile.objects.get(pk=pk)
+    # profile = request.user.profile
 
-    return render(request, 'users_app/my_profile.html', locals())
+    return render(request, 'users_app/profile.html', locals())
 

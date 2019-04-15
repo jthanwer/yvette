@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profil
+from .models import Profile
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
@@ -12,7 +12,9 @@ class CustomUserCreationForm(forms.Form):
     password1 = forms.CharField(label='Mot de passe', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Mot de passe (encore)', widget=forms.PasswordInput)
     age = forms.IntegerField(label='Age')
+    date_field = forms.DateField(widget=forms.SelectDateWidget())
     city = forms.CharField(label='Ville')
+    photo = forms.ImageField(label='Photo de profil', required=False)
 
     def clean_username(self):
         username = self.cleaned_data['username']
@@ -47,11 +49,12 @@ class CustomUserCreationForm(forms.Form):
         user.last_name = self.cleaned_data['last_name']
         user.save()
 
-        profil = Profil(user=user,
-                        age=self.cleaned_data['age'],
-                        city=self.cleaned_data['city'])
-        profil.save()
-        return profil
+        profile = Profile(user=user,
+                         age=self.cleaned_data['age'],
+                         city=self.cleaned_data['city'],
+                         photo=self.cleaned_data['photo'])
+        profile.save()
+        return profile
 
 
 class LogInForm(forms.Form):

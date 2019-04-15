@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+		<div class="container p-3 rounded coloc">
+			<div class="row">
+				<div class="col-lg-12">
+					<h4 class="my-5 text-center"> Voulez-vous vraiment supprimer cette coloc ? </h4>
+					<form class="text-center" method="post">
+						{% csrf_token %}
+						<input type="submit" class="btn btn-success px-5" name="" value="Oui">
+						<a href="{% url "detail_coloc" coloc.id %}" class="btn btn-danger px-5"> Non </a>
+					</form>
+				</div>
+			</div>
+		</div>
+{% endblock %}

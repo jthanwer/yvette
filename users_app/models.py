@@ -6,7 +6,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     age = models.IntegerField()
     city = models.CharField('Ville', max_length=20)
-    photo = models.ImageField(null=True)
+    photo = models.ImageField(blank=True)
     coloc = models.ForeignKey('mainapp.Colocation', related_name='tenants', on_delete=models.SET_NULL,
                               null=True)
 

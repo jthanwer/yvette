@@ -5,7 +5,11 @@
 		<div class="container p-3 rounded coloc">
 			<div class="row">
 				<div class="col-lg-3">
-					<img src={{coloc.owner.photo.url}} class="img-fluid img-thumbnail mx-auto d-block" alt="Mamie">
+					{% if coloc.owner.photo %}
+					<img src={{coloc.owner.photo.url}} class="img-fluid img-thumbnail mx-auto d-block">
+					{% else %}
+					<img src={% static "mainapp/img/mireille.png" %} class="img-fluid img-thumbnail mx-auto d-block">
+					{% endif %}
 					<h4 class="mt-3 text-center"> {{coloc.owner.city}} </h4>
 				</div>
 				<div class="col-lg-9">
@@ -27,7 +31,11 @@
 						<div class="col-lg-4">
 							<h5> Colocataires déjà présents </h5>
 							{% for tenant in coloc.tenants.all %}
-								<img src={{tenant.photo.url}} class="img-small rounded-circle">
+								{% if tenant.photo %}
+									<img src={{tenant.photo.url}} class="img-small rounded-circle">
+								{% else %}
+									<img src={% static "mainapp/img/mireille.png" %} class="img-small rounded-circle">
+								{% endif %}
 							{% endfor %}
 						</div>
 						<div class="col-lg-2">
@@ -88,7 +96,11 @@
 								<div class="col-lg-6 h-200 disp-tenants text-center p-3 m-0">
 									<a href="{% url "detail_profile" tenant.pk %}">
     								<span style="display: block;">
-												<img src={{tenant.photo.url}} class="img-coloc rounded-circle">
+												{% if tenant.photo %}
+													<img src={{tenant.photo.url}} class="img-coloc rounded-circle">
+												{% else %}
+													<img src={% static "mainapp/img/mireille.png" %} class="img-coloc rounded-circle">
+												{% endif %}
 												<h3 class="mt-3"> {{tenant.user.first_name}} </h3>
 										</span>
 									</a>

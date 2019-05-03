@@ -11,7 +11,7 @@
 			{% if profile.photo %}
 				<img src={{profile.photo.url}} class="rounded-circle img-thumbnail img-profile">
 			{% else %}
-				<p> Photo anonyme </p>
+				<img src={% static "mainapp/img/mireille.png" %} class="rounded-circle img-thumbnail img-profile">
 			{% endif %}
 		</div>
 		<div class="row text-center bg-w">

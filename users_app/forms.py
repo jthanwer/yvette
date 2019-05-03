@@ -12,9 +12,9 @@ class CustomUserCreationForm(forms.Form):
     password1 = forms.CharField(label='Mot de passe', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Mot de passe (encore)', widget=forms.PasswordInput)
     age = forms.IntegerField(label='Age')
-    date_field = forms.DateField(widget=forms.SelectDateWidget())
+    # date_field = forms.DateField(widget=forms.SelectDateWidget())
     city = forms.CharField(label='Ville')
-    photo = forms.ImageField(label='Photo de profil', required=False)
+    # photo = forms.ImageField(label='Photo de profil', required=False)
 
     def clean_username(self):
         username = self.cleaned_data['username']
@@ -51,8 +51,7 @@ class CustomUserCreationForm(forms.Form):
 
         profile = Profile(user=user,
                          age=self.cleaned_data['age'],
-                         city=self.cleaned_data['city'],
-                         photo=self.cleaned_data['photo'])
+                         city=self.cleaned_data['city'])
         profile.save()
         return profile
 

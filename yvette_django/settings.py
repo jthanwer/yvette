@@ -25,10 +25,10 @@ SECRET_KEY = '4c%i7n3qv9v&fga^stkc4gi=ioq9su=why1)cvsfv@7e7pglq6'
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('ENV') == 'PRODUCTION':
     DEBUG = False
+    ALLOWED_HOSTS = ['yvette1.herokuapp.com']
 else:
     DEBUG = True
-
-ALLOWED_HOSTS = ['yvette1.herokuapp.com']
+    ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 
 
 # Application definition

@@ -7,7 +7,6 @@
   <script type="text/javascript" src="{% static 'bootstrap/js/jquery-3.3.1.slim.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'bootstrap/js/popper.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-  {# <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> #}
   <link rel="stylesheet" type="text/css" href="{% static 'css/yvette.css' %}">
   <link href="https://fonts.googleapis.com/css?family=Sacramento|Signika|Playfair+Display" rel="stylesheet">
   {% block style %}{% endblock %}
@@ -15,74 +14,9 @@
 </head>
 <body>
   {% block nav %}
-  <nav class="navbar navbar-expand-md navbar-dark bg-nav">
-    <a class="navbar-brand" href="{% url "home" %}">Accueil</a>
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-        <ul class="navbar-nav mr-auto">
-            {% if user.is_authenticated and user.profile.owner %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url "detail_coloc" user.profile.owner.id %}">Votre colocation</a>
-            </li>
-            {% elif user.is_authenticated and user.profile.coloc %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url "detail_coloc" user.profile.coloc.id %}">Votre colocation</a>
-            </li>
-            {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url "create_coloc" %}">Créer une colocation </a>
-            </li>
-            {% endif %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url "list_colocs" %}">Découvrir les colocations</a>
-            </li>
-        </ul>
-    </div>
-    <div class="mx-auto order-0">
-      {% if user.is_authenticated %}
-        <a class="navbar-brand mx-auto" href="{% url "home" %}">Bienvenue sur Yvette, <strong> {{ user.first_name }} </strong> !</a>
-      {% else %}
-      <a class="navbar-brand mx-auto" href="{% url "home" %}">Bienvenue sur Yvette !</a>
-      {% endif %}
-    </div>
-    <div class="navbar-collapse collapse w-100 text-right dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-          {% if user.is_authenticated %}
-          <li class="nav-item"> </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src={{user.profile.photo.url}} class="rounded-circle img-nav">
-              Paramètres
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="{% url "detail_profile" user.profile.pk %}">Mon profil</a>
-              <a class="dropdown-item" href="{% url "deconnexion" %}">Se déconnecter</a>
-            </div>
-          </li>
-          {% else %}
-          <li class="nav-item">
-              <a class="nav-link" href="{% url "register" %}">Créer un compte</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url "login" %}">Se connecter</a>
-          </li>
-          {% endif %}
-        </ul>
-    </div>
-  </nav>
   {% endblock %}
 
   {% block messages %}
-    {% if messages %}
-      <div class="container-fluid py-2 text-center messages">
-        <ul>
-          {% for message in messages %}
-          <li{% if message.tags %} class="{{message.tags}}" {% endif %}>
-          {{message}}
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    {% endif %}
   {% endblock %}
 
   {% block content %}

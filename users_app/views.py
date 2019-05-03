@@ -6,7 +6,6 @@ from .forms import CustomUserCreationForm, LogInForm
 from .models import Profile
 
 
-
 def register(request):
     form = CustomUserCreationForm(request.POST or None, request.FILES or None)
     if form.is_valid():

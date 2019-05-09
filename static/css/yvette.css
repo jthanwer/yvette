@@ -1,6 +1,7 @@
 :root {
 	--bg-color-main: #FBEECC;
-	--bg-color-1: #2b5455;
+  	/* Vert foncé */
+	--bg-color-1: rgba(43,84,85, 1) ;
 	--bg-color-2: #ab8507;
 	--bg-color-3: #0b7b77;
 	--bg-color-4: #3d5a6c;
@@ -50,7 +51,7 @@ h5{
 }
 
 .bg-nav{
-	background-color: #2b5455;
+	background-color: var(--bg-color-1);
 }
 
 .bg-w{
@@ -95,10 +96,6 @@ h5{
   padding-bottom: 70px;
 }
 
-.ht-100{
-	height: 100px
-}
-
 .styled{
 	border:0;
 	color: #f3f2dc;
@@ -125,7 +122,7 @@ h5{
 {
 	position: relative;
 	float: left;
-	left: -10px;
+	margin-right: 10px;
 	width: 30px;
 	height: 30px;
 }
@@ -143,16 +140,6 @@ h5{
   max-height: 400px;
 }
 
-
-.h-400{
-	min-height: 400px;
-	max-height: 400px;
-}
-
-.h-200{
-	min-height: 200px;
-	max-height: 200px;
-}
 
 .disp-tenants{
 	background-color: #FBEECC;

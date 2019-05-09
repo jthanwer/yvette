@@ -40,12 +40,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
+    'bootstrap4',
     'crispy_forms',
+    'bootstrap_datepicker_plus',
     'mainapp',
     'users_app'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -136,6 +143,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
+
 STATIC_ROOT = os.path.join(BASE_DIR, "deployment", "static")
 
 STATIC_URL = '/static/'
@@ -145,17 +153,29 @@ STATICFILES_DIRS = (
 )
 
 # Media files
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 MEDIA_URL = '/media/'
 
 # URL for login
+
 LOGIN_URL = '/users/connexion/'
+
+# Custom User model
+
+AUTH_USER_MODEL = 'users_app.User'
 
 
 # If Production : whitenoise and dj_database_url
+
 if os.environ.get('ENV') == 'PRODUCTION':
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
+
+# Date-Format
+
+USE_L10N = False
+DATE_FORMAT = 'j N, Y'
 

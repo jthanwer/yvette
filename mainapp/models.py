@@ -1,10 +1,9 @@
 from django.db import models
-from users_app.models import Profile
 from django.contrib import messages
 
 
 class Colocation(models.Model):
-    owner = models.OneToOneField('users_app.Profile', on_delete=models.CASCADE, related_name='owner')
+    owner = models.OneToOneField('users_app.User', on_delete=models.CASCADE, related_name='owner')
     intro = models.TextField('Une petite description')
     two_words = models.CharField('Votre coloc en deux mots', max_length=40)
     mean_age = models.IntegerField(null=True)

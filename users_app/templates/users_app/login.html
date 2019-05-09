@@ -13,7 +13,7 @@
       </div>
       <div class="card-body">
         <div class="row justify-content-center">
-          <div class="col-lg-6">
+          <div class="col-lg-8">
             <form action="{% url "login" %}" method="post">
               {% csrf_token %}
               {{ form|crispy }}
@@ -21,7 +21,7 @@
                 <button type="submit" class="btn btn-success">Se connecter</button>
               </div>
               <div class="text-center mt-3">
-                <a href="{% url "register" %}"> Vous n'avez pas de compte ? Créez-en un ici !</a>
+                <a href="{% url "register" %}"> Vous n'avez pas de compte ? Vous pouvez en créer un ici !</a>
               </div>
             </form>
           </div>

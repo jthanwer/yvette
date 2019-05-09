@@ -8,7 +8,6 @@ from .models import Colocation
 from django.contrib import messages
 
 
-
 def home(request):
     return render(request, 'mainapp/accueil.html')
 
@@ -16,15 +15,15 @@ def home(request):
 # View to create a new coloc
 @login_required
 def create_coloc(request):
-    if hasattr(request.user.profile, 'colocation'):
+    if hasattr(request.user, 'colocation'):
         already_coloc = True
     else:
         form = ColocationForm(request.POST or None)
         if form.is_valid():
             envoi = True
             coloc = form.save(commit=False)
-            coloc.owner = request.user.profile
-            coloc.mean_age = request.user.profile.age
+            coloc.owner = request.user
+            coloc.mean_age = request.user.age
             coloc.save()
             return redirect('list_colocs')
 
@@ -65,7 +64,7 @@ class UpdateColoc(UpdateView):
 
     def get_object(self, queryset=None):
         obj = super(UpdateColoc, self).get_object()
-        if not obj.owner == self.request.user.profile:
+        if not obj.owner == self.request.user:
             raise Http404
         return obj
 
@@ -83,7 +82,7 @@ class DeleteColoc(DeleteView):
 
     def get_object(self, queryset=None):
         obj = super(DeleteColoc, self).get_object()
-        if not obj.owner == self.request.user.profile:
+        if not obj.owner == self.request.user:
             raise Http404
         return obj
 
@@ -91,11 +90,11 @@ class DeleteColoc(DeleteView):
 @login_required
 def change_coloc(request, op, id_coloc):
     if op == 'goin':
-        Colocation.add_tenant(request, id_coloc, request.user.profile)
+        Colocation.add_tenant(request, id_coloc, request.user)
         Colocation.update_mean_age(id_coloc)
         return HttpResponseRedirect(reverse('detail_coloc', kwargs={'pk': id_coloc}))
     if op == 'leave':
-        Colocation.remove_tenant(request, id_coloc, request.user.profile)
+        Colocation.remove_tenant(request, id_coloc, request.user)
         Colocation.update_mean_age(id_coloc)
         return HttpResponseRedirect(reverse('detail_coloc', kwargs={'pk': id_coloc}))
 

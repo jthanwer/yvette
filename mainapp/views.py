@@ -3,7 +3,7 @@ from django.http import Http404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView
 from django.urls import reverse_lazy, reverse
-from .forms import ColocationForm
+from .forms import ColocationForm, FilterForm
 from .models import Colocation
 from django.contrib import messages
 

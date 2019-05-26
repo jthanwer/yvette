@@ -1,11 +1,22 @@
+@import url('sidebar.css');
+
 :root {
-	--bg-color-main: #FBEECC;
-  	/* Vert foncé */
-	--bg-color-1: rgba(43,84,85, 1) ;
-	--bg-color-2: #ab8507;
+	/* Beige */
+	--bg-color-main: rgb(251, 238, 204, 1);
+	/* Beige foncé */
+	--bg-color-1: rgba(171, 133, 7, 1);
+	--bg-color-1-hov: rgba(191, 163, 40, 1);
+  /* Vert foncé */
+	--bg-color-2: rgba(43, 84, 85, 1) ;
+	--bg-color-2-hov: rgba(53, 124, 95, 1);
+
+
 	--bg-color-3: #0b7b77;
 	--bg-color-4: #3d5a6c;
+
+	--transit-time: 0.5s;
 }
+
 
 html{
 	font-size: 1.3rem;
@@ -18,6 +29,13 @@ body{
 header {
     padding: 100px 0 0;
     text-align: center;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+		margin-top: 50px;
 }
 
 h1{
@@ -37,7 +55,6 @@ h2{
 h3{
 	font-family: 'Signika', sans-serif;
 	font-size: 2.2rem;
-	color: #2B5455;
 }
 
 h4{
@@ -50,59 +67,67 @@ h5{
 	font-weight: bold;
 }
 
-.bg-nav{
-	background-color: var(--bg-color-1);
+
+.navbar .nav-link{
+	color: white !important;
 }
 
-.bg-w{
-	background-color: white;
+.bg-nav{
+	background-color: var(--bg-color-2);
+}
+
+.bg-white{
+	background-color: #fff;
+}
+
+.bg-1{
+	background-color: var(--bg-color-1);
+	color: white;
+}
+
+.bg-1:hover{
+	background-color: var(--bg-color-1-hov);
+	color: white !important;
 }
 
 .bg-2{
-	background-color: #0b7b77;
+	background-color: var(--bg-color-2);
+	color: white;
+}
+
+.bg-2:hover{
+	background-color: var(--bg-color-2-hov);
+	color: white;
 }
 
 .bg-3{
-	background-color: #3d5a6c;
+	background-color: var(--bg-color-3);
+	color: white;
 }
 
+.bg-4{
+	background-color: var(--bg-color-4);
+	color: white;
+}
 
 .btn{
 	margin : 10px 10px 10px 10px;
 	padding : 10px 50px 10px 50px;
 	font-size: 20px;
 	font-weight: bold;
+	max-width: 350px;
+	transition: var(--transit-time);
 }
 
-.btn-bg-1{
-	background-color: #ab8507 !important;
-	color: white;
-}
-
-.btn-bg-2{
-	background-color: #2b5455 !important;
-	color: white;
-}
 
 .coloc{
 	border : 2px solid #cecece;
 	margin-top: 10px;
 	padding: 5px 5px 5px 5px;
 	background-color: white;
+	border : 7px solid var(--bg-color-2);
 }
 
-.padding-cont {
-  padding-top: 70px;
-  padding-bottom: 70px;
-}
-
-.styled{
-	border:0;
-	color: #f3f2dc;
-	background: #2b5455;
-	padding: 10px 10px 10px 10px;
-	margin : 20px 10px 10px 20px;
-}
 
 .img-small{
 	width: 40px;
@@ -112,7 +137,7 @@ h5{
 .img-profile{
 	position: absolute;
 	left: 50%;
-	top: 100px;
+	top: -75px;
 	width : 150px;
 	height: 150px;
 	margin-left: -75px;

@@ -57,24 +57,3 @@ class User(AbstractBaseUser, PermissionsMixin):
         return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
 
 
-#
-# class Profile(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     birth_date = models.DateField(verbose_name='Date de naissance')
-#     city = models.CharField(max_length=50, verbose_name='Ville')
-#     photo = models.ImageField(verbose_name='Photo de profil', blank=True, null=True)
-#     coloc = models.ForeignKey('mainapp.Colocation', related_name='tenants', on_delete=models.SET_NULL,
-#                               blank=True, null=True)
-#
-#     class Meta:
-#         verbose_name = "Profile"
-#         ordering = ['city']
-#
-#     def __str__(self):
-#         return "{} {}".format(self.user.first_name, self.user.last_name)
-#
-#     @property
-#     def age(self):
-#         born = self.birth_date
-#         today = dt.date.today()
-#         return today.year - born.year - ((today.month, today.day) < (born.month, born.day))

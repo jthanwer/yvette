@@ -1,43 +1,58 @@
 {% extends "base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block style %}
-  <link rel="stylesheet" type="text/css" href="{% static 'yvette/accueil.css' %}">
-{% endblock %}
 
 {% block content %}
-  {% if user.is_authenticated %}
-    {% if  envoi%}
-    <div class="container">
-      <div class="card my-5">
-        <div class="card-header text-light bg-nav">
-          <h2 class="text-center my-3"> Votre colocation a été mise à jour </h2>
+{% if user.is_authenticated %}
+<div class="container">
+  <div class="card my-5">
+    <div class="card-header text-light bg-nav">
+      <h2 class="text-center my-3"> Modifier votre colocation </h2>
+    </div>
+    <div class="card-body">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          {% crispy form %}
         </div>
       </div>
     </div>
-    {% else %}
-    <div class="container">
-      <div class="card my-5">
-        <div class="card-header text-light bg-nav">
-          <h2 class="text-center my-3"> Mettre à jour votre colocation </h2>
-        </div>
-        <div class="card-body">
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <form action="" method="post">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <div class="row justify-content-center">
-                  <button type="submit" class="btn btn-warning">Mettre à jour</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    {% endif %}
-  {% else %}
-  <h1>Vous ne pouvez pas créer de colocation si vous n'êtes pas connecté</h1>
-  {% endif %}
+  </div>
+</div>
+{% else %}
+<h1>Vous ne pouvez pas modifier cette colocation si vous en n'êtes pas le créateur</h1>
+{% endif %}
+{% endblock %}
+
+{% block foot-javascript %}
+<script>
+$( document ).ready( function() {
+  // On interdit le copier/coller du mail
+  $('#id_confirmation_mail').bind('copy paste', function(e) {
+    e.preventDefault();
+  });
+  // On affiche le calendrier lorsqu'on clique sur le champ date de naissance
+  $('#id_birth_date').click(function(){
+    $(this).parent().data("DatePicker").show();
+  });
+  // On teste la valeur de la date et on la force à vide si elle est mauvaise
+  $('#id_birth_date').change(function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    var val = $(this).val();
+    var format = new RegExp("^\\d{2}\/\\d{2}\/\\d{4}$");
+    if(!format.test(val)) {
+      $(this).val("");
+    }
+  });
+
+  $('.btnNext').click(function(){
+    $('.nav-tabs .active').parent().next('li').find('a').trigger('click');
+  });
+
+  $('.btnPrevious').click(function(){
+    $('.nav-tabs .active').parent().prev('li').find('a').trigger('click');
+  });
+  // Afficher l'onglet suivant en cliquant sur le bouton suivant
+});
+</script>
 {% endblock %}

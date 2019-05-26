@@ -10,6 +10,7 @@
 	transition: all 0.3s;
 }
 
+
 #sidebar.active {
 	margin-left: -250px;
 }

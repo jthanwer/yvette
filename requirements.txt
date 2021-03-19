@@ -9,7 +9,7 @@ gunicorn==19.9.0
 Jinja2==2.10
 MarkupSafe==1.1.1
 olefile==0.46
-Pillow==5.4.1
+Pillow==8.1.1
 psycopg2==2.7.6.1
 PyQt5-sip==4.19.15
 pytz==2018.9
